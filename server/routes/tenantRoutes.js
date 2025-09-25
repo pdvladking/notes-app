@@ -1,6 +1,6 @@
 import express from "express";
 import Tenant from "../models/Tenant.js";
-import authMiddleware from "../middleware/authMiddleware.js";
+import authMiddleware from "../middleware/verifyToken.js";
 
 const router = express.Router();
 
