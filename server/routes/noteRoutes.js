@@ -1,6 +1,11 @@
+import express from "express";
+import Note from "../models/Note.js";
 import Tenant from "../models/Tenant.js";
+import verifyToken from "../middleware/verifyToken.js";
 
-router.post("/", authMiddleware, async (req, res) => {
+const router = express.Router();
+
+router.post("/", verifyToken, async (req, res) => {
   const { title, content } = req.body;
   const user = req.user;
 
@@ -27,3 +32,5 @@ router.post("/", authMiddleware, async (req, res) => {
     res.status(500).json({ message: "Error creating note" });
   }
 });
+
+export default router;
